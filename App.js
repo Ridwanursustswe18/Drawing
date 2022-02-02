@@ -95,3 +95,4 @@ function colorPicker(){
 eraser.addEventListener("click",function(){
     ctx.strokeStyle = "#FFFFFF";
 })
+// I failed add some features like erasers,and shapes
