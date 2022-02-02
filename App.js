@@ -1,6 +1,6 @@
 //creating the canvas variable
 //Setting the canvas's size to the size of the screen
-const canvas = document.getElementById("canvas")
+let canvas = document.getElementById("canvas")
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
@@ -41,6 +41,18 @@ clearBtn.addEventListener("click",function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 });
 
+//saving the images
+let saveBtn = document.querySelector(".save");
+saveBtn.addEventListener("click",function(){
+    let data = canvas.toDataURL("imag/png");
+    let a = document.createElement("a");
+    a.href = data;
+    a.download = "sketch.png";
+    a.click();
+});
+//eraser functionality
+
+
 //Set draw to true when mouse is pressed
 window.addEventListener("mousedown",function(e){
     draw = true;
@@ -73,3 +85,13 @@ ctx.stroke();
 prevX = currentX
 prevY = currentY;
 });
+//changing colors through a button
+function colorPicker(){
+    let color = document.getElementById("color-picker").value;
+    ctx.strokeStyle = color;
+    return ctx.strokeStyle;
+}
+//eraser functionality
+eraser.addEventListener("click",function(){
+    ctx.strokeStyle = "#FFFFFF";
+})
